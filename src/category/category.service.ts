@@ -15,19 +15,6 @@ export class CategoryService {
     return await this.categoryRepository.save(createCategoryDto);
   }
 
-  async findAll(search?: string) {
-    if (!search) {
-      return await this.categoryRepository.find();
-    } else {
-      return await this.categoryRepository
-        .createQueryBuilder('category')
-        .where(`category.name ilike '%' || :searchQuery || '%'`, {
-          searchQuery: search,
-        })
-        .getMany();
-    }
-  }
-
   async findOne(id: number) {
     return await this.categoryRepository.findOne({ where: { id } });
   }

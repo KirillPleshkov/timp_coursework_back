@@ -31,21 +31,6 @@ export class ProductService {
     return await this.productRepository.save(product);
   }
 
-  async findAll(search?: string) {
-    console.log(search);
-
-    if (!search) {
-      return await this.productRepository.find();
-    } else {
-      return await this.productRepository
-        .createQueryBuilder('category')
-        .where(`category.name ilike '%' || :searchQuery || '%'`, {
-          searchQuery: search,
-        })
-        .getMany();
-    }
-  }
-
   findOne(id: number) {
     return `This action returns a #${id} product`;
   }
