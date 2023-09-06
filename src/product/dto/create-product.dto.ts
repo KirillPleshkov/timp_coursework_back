@@ -10,4 +10,6 @@ export class CreateProductDto {
   readonly description: string;
 
   readonly categoryName: string;
+
+  readonly symptomName: string;
 }

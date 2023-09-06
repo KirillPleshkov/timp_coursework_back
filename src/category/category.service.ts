@@ -15,7 +15,18 @@ export class CategoryService {
     return await this.categoryRepository.save(createCategoryDto);
   }
 
-  async findOne(id: number) {
-    return await this.categoryRepository.findOne({ where: { id } });
+  async findById(id: number) {
+    return (
+      await this.categoryRepository.findOne({
+        where: { id },
+        relations: {
+          products: true,
+        },
+      })
+    )?.products;
+  }
+
+  async find() {
+    return await this.categoryRepository.find();
   }
 }

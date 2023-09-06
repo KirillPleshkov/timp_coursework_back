@@ -12,7 +12,12 @@ export class CategoryController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.categoryService.findOne(+id);
+  findById(@Param('id') id: number) {
+    return this.categoryService.findById(id);
+  }
+
+  @Get()
+  find() {
+    return this.categoryService.find();
   }
 }

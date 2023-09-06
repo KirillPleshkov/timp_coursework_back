@@ -3,6 +3,8 @@ import { ProductModule } from './product/product.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoryModule } from './category/category.module';
 import { SearchModule } from './search/search.module';
+import { SymptomModule } from './symptom/symptom.module';
+import { AssistantModule } from './assistant/assistant.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { SearchModule } from './search/search.module';
     ProductModule,
     CategoryModule,
     SearchModule,
+    SymptomModule,
+    AssistantModule,
   ],
 })
 export class AppModule {}
