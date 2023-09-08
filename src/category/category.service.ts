@@ -16,14 +16,12 @@ export class CategoryService {
   }
 
   async findById(id: number) {
-    return (
-      await this.categoryRepository.findOne({
-        where: { id },
-        relations: {
-          products: true,
-        },
-      })
-    )?.products;
+    return await this.categoryRepository.findOne({
+      where: { id },
+      relations: {
+        products: true,
+      },
+    });
   }
 
   async find() {

@@ -15,13 +15,11 @@ export class SymptomService {
   }
 
   async findById(id: number) {
-    return (
-      await this.symptomRepository.findOne({
-        where: { id },
-        relations: {
-          products: true,
-        },
-      })
-    )?.products;
+    return await this.symptomRepository.findOne({
+      where: { id },
+      relations: {
+        products: true,
+      },
+    });
   }
 }
