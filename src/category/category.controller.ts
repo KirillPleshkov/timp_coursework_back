@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Headers } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 
@@ -12,8 +12,11 @@ export class CategoryController {
   }
 
   @Get(':id')
-  findById(@Param('id') id: number) {
-    return this.categoryService.findById(id);
+  findById(
+    @Param('id') id: number,
+    @Headers() headers: Record<string, string>,
+  ) {
+    return this.categoryService.findById(id, headers);
   }
 
   @Get()

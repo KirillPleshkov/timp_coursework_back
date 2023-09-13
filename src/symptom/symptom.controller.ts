@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Headers } from '@nestjs/common';
 import { SymptomService } from './symptom.service';
 import { CreateSymptomDto } from './dto/create-symptom.dto';
 
@@ -12,7 +12,10 @@ export class SymptomController {
   }
 
   @Get(':id')
-  findById(@Param('id') id: number) {
-    return this.symptomService.findById(id);
+  findById(
+    @Param('id') id: number,
+    @Headers() headers: Record<string, string>,
+  ) {
+    return this.symptomService.findById(id, headers);
   }
 }

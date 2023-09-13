@@ -9,7 +9,17 @@ export class CreateProductDto {
 
   readonly description: string;
 
+  readonly indicationsForUse: string;
+
+  readonly contraindications: string;
+
+  readonly applicationMethod: string;
+
+  readonly shelfLife: string;
+
   readonly categoryName: string;
 
   readonly symptomName: string;
+
+  readonly price: number;
 }
