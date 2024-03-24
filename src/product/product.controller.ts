@@ -15,4 +15,9 @@ export class ProductController {
   findOne(@Param('id') id: number, @Headers() headers: Record<string, string>) {
     return this.productService.findOne(id, headers);
   }
+
+  @Get()
+  findAll(@Headers() headers: Record<string, string>) {
+    return this.productService.findAll(headers);
+  }
 }

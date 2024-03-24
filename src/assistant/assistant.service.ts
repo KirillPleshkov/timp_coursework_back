@@ -10,9 +10,12 @@ export class AssistantService {
   ) {}
 
   async findByQuery(symptomName?: string) {
-    return await this.symptomRepository.findOne({
+    const symptom = await this.symptomRepository.findOne({
       where: { name: symptomName },
-      select: { id: true },
+      relations: {
+        products: true,
+      },
     });
+    return symptom;
   }
 }

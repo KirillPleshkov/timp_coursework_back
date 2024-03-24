@@ -69,4 +69,25 @@ export class ProductService {
       return await this.productRepository.findOne({ where: { id } });
     }
   }
+
+  async findAll(headers: Record<string, string>) {
+    try {
+      const user = await this.basketService.getUserByHeaders(headers);
+
+      const products = await this.productRepository.find();
+
+      const changedProduct = await Promise.all(
+        products.map(async (el) => {
+          return {
+            ...el,
+            isBasket: await this.basketService.isBasket(el.id, user),
+          };
+        }) as readonly unknown[] | [],
+      );
+
+      return changedProduct;
+    } catch (e) {
+      return await this.productRepository.find();
+    }
+  }
 }

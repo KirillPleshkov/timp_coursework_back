@@ -16,7 +16,7 @@ import { BasketModule } from './basket/basket.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'kir.kir@@',
+      password: 'rootroot',
       database: 'chemist-shop',
       synchronize: true,
       autoLoadEntities: true,
